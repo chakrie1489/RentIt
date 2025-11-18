@@ -1,168 +1,172 @@
-<h1>🛒 ShopEase - Full-Stack E-Commerce Website</h1>
+<!--
+    RentIt - README
+    This README is tailored for the RentIt project (peer-to-peer item borrowing).
+-->
 
-<p>
-    ShopEase is a fully functional e-commerce platform built with the <strong>MERN stack</strong> (MongoDB, Express, React, Node.js). 
-    It includes essential e-commerce features like product browsing, filtering, user authentication, order management, and an integrated payment gateway using <strong>Stripe</strong>. 
-    An admin panel is also provided for managing products and orders efficiently.
-</p>
+# RentIt
 
-<hr>
+RentIt is a peer-to-peer item borrowing platform that lets nearby people lend and borrow everyday items. The application was adapted from an e-commerce template and customized to support listings with images, time-based pricing (hourly/daily), borrow requests, and owner approval workflows.
 
-<h2>🚀 Features</h2>
+## Table of contents
 
-<h3>✅ User Features</h3>
-<ul>
-    <li>🏠 <strong>Home Page</strong> – Browse featured and new products.</li>
-    <li>🔍 <strong>Product Listing</strong> – View all products with filters for category, price, and more.</li>
-    <li>🛒 <strong>Cart Management</strong> – Add, remove, and adjust quantities in the cart.</li>
-    <li>💳 <strong>Secure Checkout</strong> – Make payments using Stripe.</li>
-    <li>🗂 <strong>Order History</strong> – View past orders and their status.</li>
-    <li>🔐 <strong>User Authentication</strong> – Register, login, and manage profile.</li>
-</ul>
+- [Features](#features)
+- [Architecture & folders](#architecture--folders)
+- [Prerequisites](#prerequisites)
+- [Environment variables](#environment-variables)
+- [Local setup (development)](#local-setup-development)
+- [Seeding test data](#seeding-test-data)
+- [Running in production (basic)](#running-in-production-basic)
+- [Important implementation notes](#important-implementation-notes)
+- [Contributing & license](#contributing--license)
 
-<h3>🔑 Admin Features</h3>
-<ul>
-    <li>📦 <strong>Manage Products</strong> – Add, update, and delete products.</li>
-    <li>📊 <strong>Order Management</strong> – View all orders and update their status.</li>
-    <li>🏷 <strong>Category Management</strong> – Create and manage product categories and subcategories.</li>
-</ul>
+---
 
-<hr>
+## Features
 
-<h2>💡 Tech Stack</h2>
+- Create, edit and remove item listings with multiple images
+- Specify hourly or daily rates and mark availability
+- Browse and search listings; image gallery on item page
+- Borrow request workflow: borrowers submit requests; owners accept/decline
+- User authentication with JWT; user profile and request history
+- File uploads handled with multer; files served from `/uploads`
 
-<h3>Frontend:</h3>
-<ul>
-    <li>React (with Hooks and Context API)</li>
-    <li>Redux for state management</li>
-    <li>Axios for HTTP requests</li>
-</ul>
+## Architecture & folders
 
-<h3>Backend:</h3>
-<ul>
-    <li>Node.js</li>
-    <li>Express.js</li>
-    <li>MongoDB (Mongoose ORM)</li>
-</ul>
+Top-level layout (important folders):
 
-<h3>Payment Integration:</h3>
-<ul>
-    <li>Stripe Payment Gateway</li>
-</ul>
+- `backend/` — Express server, Mongoose models, routes, middleware, uploads
+    - `backend/server.js` — app entrypoint (serves `/uploads` statically)
+    - `backend/routes/` — API route definitions (items, requests, users, orders)
+    - `backend/controllers/` — controller logic
+    - `backend/models/` — Mongoose schemas (item, request, user, order)
+    - `backend/middleware/` — auth (JWT), multer config, admin checks
+    - `backend/uploads/` — stored images (served at `/uploads`)
 
-<h3>Authentication:</h3>
-<ul>
-    <li>JWT (JSON Web Tokens)</li>
-    <li>bcrypt for password hashing</li>
-</ul>
+- `frontend/` — React (Vite) application
+    - `frontend/src/Pages` — main pages (Home, Product, NewListing, Profile, Requests, etc.)
+    - `frontend/src/components` — reusable UI components
+    - `frontend/src/api.js` — central client-side API helpers
 
-<hr>
+Other helpful files:
 
-<h2>🛠 Installation</h2>
+- `backend/seed.js` — script to populate demo users and items
+- `README.md` — this file
 
-<h3>1. Clone the Repository</h3>
-<pre>
-<code>
-git clone https://github.com/adarshupadhyay21/shopease.git
-cd shopease
-</code>
-</pre>
+## Prerequisites
 
-<h3>2. Install Dependencies</h3>
+- Node.js >= 16, npm
+- MongoDB (local or Atlas). If using Atlas, get the connection URI.
 
-<strong>Frontend</strong>
-<pre>
-<code>
-cd client
+## Environment variables
+
+Create a `.env` file inside `backend/` with the following values (minimum):
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=a_strong_secret_for_jwt
+PORT=4000
+# Optional (only if you plan to use them):
+# STRIPE_SECRET_KEY=sk_live_...
+# CLOUDINARY_URL=...
+```
+
+Keep secrets out of the repo. Use environment management for production.
+
+## Local setup (development)
+
+1) Install dependencies
+
+```bash
+# from project root
+cd backend
 npm install
-</code>
-</pre>
 
-<strong>Backend</strong>
-<pre>
-<code>
-cd server
+cd ../frontend
 npm install
-</code>
-</pre>
+```
 
-<h3>3. Create a <code>.env</code> file in the <code>/server</code> folder</h3>
-<p>Add the following environment variables:</p>
-<pre>
-<code>
-MONGO_URI=&lt;your-mongodb-uri&gt;
-JWT_SECRET=&lt;your-jwt-secret&gt;
-STRIPE_SECRET_KEY=&lt;your-stripe-secret-key&gt;
-</code>
-</pre>
+2) Start the backend and frontend
 
-<h3>4. Start the Development Server</h3>
+Open two terminals (or use a multiplexer):
 
-<strong>Backend:</strong>
-<pre>
-<code>
-cd server
+```bash
+# Terminal A: start backend
+cd backend
 npm run dev
-</code>
-</pre>
 
-<strong>Frontend:</strong>
-<pre>
-<code>
-cd client
-npm start
-</code>
-</pre>
+# Terminal B: start frontend (Vite)
+cd frontend
+npm run dev
+```
 
-<hr>
+Notes:
+- Backend defaults to http://localhost:4000 (can be changed via `PORT`).
+- Frontend runs on a Vite port (usually http://localhost:5173). The frontend expects the API at `http://localhost:4000` by default.
 
-<h2>🚦 Usage</h2>
-<ol>
-    <li>Open <a href="http://localhost:3000" target="_blank">http://localhost:3000</a> in your browser.</li>
-    <li>Register or log in to explore the platform.</li>
-    <li>Add products to the cart and proceed to checkout using Stripe.</li>
-    <li>Admins can access the admin panel at <code>/admin</code>.</li>
-</ol>
+3) Sign in / testing
 
-<hr>
+- Use the routes in `backend/seed.js` to create demo accounts (or run the seed manually). Once signed in you can create listings from the `NewListing` page and upload images.
 
-<h2>📸 Screenshots</h2>
-<table>
-    <tr>
-        <th>Home Page</th>
-        <th>Product Page</th>
-        <th>Admin Panel</th>
-    </tr>
-    <tr>
-        <td><img src="./screenshots/home.png" alt="Home" width="300"></td>
-        <td><img src="./screenshots/product.png" alt="Product" width="300"></td>
-        <td><img src="./screenshots/admin.png" alt="Admin" width="300"></td>
-    </tr>
-</table>
+## Seeding test data
 
-<hr>
+To load demo users and items (local testing), run:
 
-<h2>🚀 Future Improvements</h2>
-<ul>
-    <li>Add product reviews and ratings</li>
-    <li>Implement order tracking and delivery status updates</li>
-    <li>Enhance user profile with more customization options</li>
-</ul>
+```bash
+cd backend
+node seed.js
+```
 
-<hr>
+This will create sample lender/borrower accounts and a few items. Check `backend/seed.js` for credentials and details.
 
+## Running in production (basic)
+
+This is a minimal guide — adapt as needed for your hosting provider.
+
+1) Build frontend
+
+```bash
+cd frontend
+npm run build
+```
+
+2) Serve frontend and backend
+
+- Option A: Deploy frontend build to static host (Netlify/Vercel) and deploy backend to a Node host (Heroku, Render, DigitalOcean).
+- Option B: Serve built frontend from the backend with a static middleware (not preconfigured) — you may need to copy `frontend/dist` into a `public` folder and serve it from Express.
+
+3) Set environment variables in your host for `MONGO_URI`, `JWT_SECRET`, and other keys.
+
+## Important implementation notes
+
+- File uploads: Images uploaded via the frontend are stored in `backend/uploads` (disk) and served at `http://<server>/uploads/<filename>`.
+    - Consider switching to a managed object store (S3/Cloudinary) for production.
+
+- Auth: Requests expect a `token` header with the JWT. See `backend/middleware/authMiddleware.js` for details.
+
+- Requests and availability: The request flow is implemented with lightweight request documents (see `backend/models/requestModel.js`) and owner actions to approve/decline.
+
+- Seed data: `backend/seed.js` will attempt to connect to your configured MongoDB and populate sample documents.
+
+## Troubleshooting
+
+- If frontend can't reach the API, ensure backend is running and `MONGO_URI` is correct.
+- Inspect server logs (`backend/*-start.log`, `backend-run.log`) for errors.
+- If file uploads fail, check folder permissions for `backend/uploads` and that the backend serves that static path in `server.js`.
+
+## Contributing
+
+- Use branches for features and open a pull request when ready. For large changes open an issue first to discuss the design.
+
+## License
+
+This project is released under the MIT License.
+
+---
+If you want, I can also add:
+
+- a `CONTRIBUTING.md` with development guidelines
+- a short `README-short.md` for GitHub home and move detailed docs into `docs/`
+- badges (build / license) at the top of this README
+
+Tell me which extras you'd like and I'll add them.
 <h2>🤝 Contributing</h2>
-<p>
-    Contributions are welcome! Feel free to fork the repo and submit a pull request.
-</p>
-
-<hr>
-
-<h2>🛡 License</h2>
-<p>
-    This project is licensed under the <strong>MIT License</strong>.
-</p>
-
-<hr>
-
-<p><strong>⭐ If you like this project, give it a star! 🌟</strong></p>
