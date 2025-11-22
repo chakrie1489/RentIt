@@ -57,10 +57,11 @@ const Login = () => {
   }, [token]);
 
   return (
-    <form
-      onSubmit={onSubmitHandler}
-      className='flex flex-col text-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-700'
-    >
+    <div className='w-full min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 py-10 flex items-center justify-center'>
+      <form
+        onSubmit={onSubmitHandler}
+        className='flex flex-col text-center w-[90%] sm:max-w-96 gap-4 text-gray-700 bg-white rounded-lg shadow-lg p-8'
+      >
       <div className='inline-flex items-center gap-2 mb-2 mt-10'>
         <p className='prata-regular text-3xl'>{currState}</p>
         <hr className='border-none h-[1.5px] w-8 bg-gray-800' />
@@ -128,6 +129,7 @@ const Login = () => {
         {currState === "Sign Up" ? "Sign up" : "Login"}
       </button>
     </form>
+    </div>
   );
 };
 

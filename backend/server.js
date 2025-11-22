@@ -9,6 +9,7 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import itemRouter from "./routes/itemRoute.js";
 import requestRouter from "./routes/requestRoute.js";
+import ratingRouter from "./routes/ratingRoute.js";
 
 
 //app congig
@@ -34,6 +35,7 @@ app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
 app.use('/api/items', itemRouter);
 app.use('/api/requests', requestRouter);
+app.use('/api/ratings', ratingRouter);
 
 app.get("/",(req,res)=>{
     res.send("API working")

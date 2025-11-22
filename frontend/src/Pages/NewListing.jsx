@@ -84,7 +84,7 @@ const NewListing = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-50 py-10 px-4'>
+    <div className='w-full min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 py-10 px-4'>
       <form onSubmit={onSubmit} className='max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8'>
         <h1 className='text-3xl font-bold mb-8'>{editingId ? 'Edit Listing' : 'Create New Listing'}</h1>
         

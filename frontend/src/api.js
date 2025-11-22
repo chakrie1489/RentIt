@@ -52,8 +52,21 @@ export async function updateItem(id, body) {
   return res.data;
 }
 
-export async function createRequest(itemId, body) {
-  const res = await client.post(`/api/requests/${itemId}`, body, authHeaders());
+export async function createRequest(body) {
+  const res = await client.post(`/api/requests`, body, authHeaders());
+  return res.data;
+}
+
+export async function getAllRequests(category, sortBy) {
+  const params = {};
+  if (category) params.category = category;
+  if (sortBy) params.sortBy = sortBy;
+  const res = await client.get(`/api/requests`, { params });
+  return res.data;
+}
+
+export async function getRequest(id) {
+  const res = await client.get(`/api/requests/${id}`);
   return res.data;
 }
 
@@ -62,13 +75,40 @@ export async function getMyRequests() {
   return res.data;
 }
 
-export async function getOwnerRequests() {
-  const res = await client.get(`/api/requests/owner/my`, authHeaders());
+export async function closeRequest(requestId, status) {
+  const res = await client.patch(`/api/requests/${requestId}/close`, { status }, authHeaders());
   return res.data;
 }
 
-export async function respondRequest(requestId, action) {
-  const res = await client.patch(`/api/requests/${requestId}`, { action }, authHeaders());
+export async function deleteRequest(requestId) {
+  const res = await client.delete(`/api/requests/${requestId}`, authHeaders());
+  return res.data;
+}
+
+// Rating APIs
+export async function createRating(body) {
+  const res = await client.post(`/api/ratings/create`, body, authHeaders());
+  return res.data;
+}
+
+export async function getUserRatings(userId) {
+  const res = await client.get(`/api/ratings/user/${userId}`);
+  return res.data;
+}
+
+export async function getRating(fromUserId, toUserId, orderId) {
+  const params = { fromUserId, toUserId, orderId };
+  const res = await client.get(`/api/ratings/check`, { params });
+  return res.data;
+}
+
+export async function getUserRatingSummary(userId) {
+  const res = await client.get(`/api/ratings/summary/${userId}`);
+  return res.data;
+}
+
+export async function getUserRatingsBench(userId) {
+  const res = await client.get(`/api/ratings/bench/${userId}`);
   return res.data;
 }
 
