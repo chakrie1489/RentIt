@@ -191,7 +191,7 @@ const CreateRequest = () => {
                 <div className='bg-gradient-to-r from-primary-100 to-accent-100 rounded-lg p-4 mb-4'>
                   <p className='text-primary-600 font-semibold mb-1'>Listed Price</p>
                   <p className='text-3xl font-bold text-primary-700'>
-                    ${item.price} <span className='text-lg text-gray-600'>/ {item.priceUnit}</span>
+                    ₹{item.price} <span className='text-lg text-gray-600'>/ {item.priceUnit}</span>
                   </p>
                 </div>
 
@@ -267,7 +267,7 @@ const CreateRequest = () => {
                       Proposed Price (Optional)
                     </label>
                     <div className='relative'>
-                      <span className='absolute left-4 top-3 text-2xl font-bold text-gray-400'>$</span>
+                      <span className='absolute left-4 top-3 text-2xl font-bold text-gray-400'>₹</span>
                       <input
                         type='number'
                         name='proposedPrice'

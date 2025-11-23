@@ -253,7 +253,7 @@ const Requests = () => {
                         <div className='flex justify-between'>
                           <span className='text-gray-600'>Max Price:</span>
                           <span className='font-semibold text-green-600'>
-                            ${req.maxPrice}/day
+                            ₹{req.maxPrice}/day
                           </span>
                         </div>
                         {req.radiusKm && (

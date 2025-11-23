@@ -271,12 +271,12 @@ const Booking = () => {
                 </div>
                 <div className='flex justify-between'>
                   <span className='text-gray-600'>Daily Rate:</span>
-                  <span className='font-bold text-blue-600'>${item.price}</span>
+                  <span className='font-bold text-blue-600'>₹{item.price}</span>
                 </div>
                 {item.deposit && (
                   <div className='flex justify-between'>
                     <span className='text-gray-600'>Deposit:</span>
-                    <span className='font-semibold text-gray-800'>${item.deposit}</span>
+                    <span className='font-semibold text-gray-800'>₹{item.deposit}</span>
                   </div>
                 )}
               </div>
@@ -292,17 +292,17 @@ const Booking = () => {
                 <>
                   <div className='space-y-3 mb-6 pb-6 border-b border-gray-200'>
                     <div className='flex justify-between'>
-                      <span className='text-gray-600'>${item.price} × {days} days</span>
-                      <span className='font-semibold text-gray-800'>${rentalCost.toFixed(2)}</span>
+                      <span className='text-gray-600'>₹{item.price} × {days} days</span>
+                      <span className='font-semibold text-gray-800'>₹{rentalCost.toFixed(2)}</span>
                     </div>
                     <div className='flex justify-between'>
                       <span className='text-gray-600'>Tax (10%)</span>
-                      <span className='font-semibold text-gray-800'>${tax.toFixed(2)}</span>
+                      <span className='font-semibold text-gray-800'>₹{tax.toFixed(2)}</span>
                     </div>
                     {deposit > 0 && (
                       <div className='flex justify-between'>
                         <span className='text-gray-600'>Deposit (Escrow)</span>
-                        <span className='font-semibold text-gray-800'>${deposit.toFixed(2)}</span>
+                        <span className='font-semibold text-gray-800'>₹{deposit.toFixed(2)}</span>
                       </div>
                     )}
                   </div>
@@ -310,7 +310,7 @@ const Booking = () => {
                   <div className='flex justify-between items-center'>
                     <span className='text-lg font-bold text-gray-800'>Total</span>
                     <span className='text-2xl font-bold text-blue-600'>
-                      ${total.toFixed(2)}
+                      ₹{total.toFixed(2)}
                     </span>
                   </div>
 

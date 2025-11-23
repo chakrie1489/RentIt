@@ -34,7 +34,7 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink to='/collection' className='group flex flex-col items-center gap-1 hover:text-blue-100 transition'>
-                        <p className='font-medium'>LISTINGS</p>
+                        <p className='font-medium'>BROWSE</p>
                         <hr className='group-[.active]:h-0.5 group-[.active]:w-3/4 group-[.active]:border-none group-[.active]:bg-white w-0 group-hover:w-3/4 group-hover:h-0.5 group-hover:border-none group-hover:bg-blue-100 transition-all' />
                     </NavLink>{" "}
 

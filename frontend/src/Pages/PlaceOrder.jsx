@@ -163,21 +163,21 @@ const PlaceOrder = () => {
               <div className='space-y-3 mb-6 pb-6 border-b border-gray-200'>
                 <div className='flex justify-between'>
                   <span className='text-gray-600'>Subtotal</span>
-                  <span className='font-semibold text-gray-800'>$ Subtotal</span>
+                  <span className='font-semibold text-gray-800'>₹ Subtotal</span>
                 </div>
                 <div className='flex justify-between'>
                   <span className='text-gray-600'>Tax (10%)</span>
-                  <span className='font-semibold text-gray-800'>$ Tax</span>
+                  <span className='font-semibold text-gray-800'>₹ Tax</span>
                 </div>
                 <div className='flex justify-between'>
                   <span className='text-gray-600'>Shipping</span>
-                  <span className='font-semibold text-gray-800'>$5.00</span>
+                  <span className='font-semibold text-gray-800'>₹500</span>
                 </div>
               </div>
 
               <div className='flex justify-between items-center mb-6'>
                 <span className='text-lg font-bold text-gray-800'>Total</span>
-                <span className='text-2xl font-bold text-blue-600'>$ Total</span>
+                <span className='text-2xl font-bold text-blue-600'>₹ Total</span>
               </div>
 
               <button type='submit' disabled={loading} className='w-full bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-bold py-3 rounded-lg transition text-lg'>

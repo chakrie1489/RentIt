@@ -138,7 +138,7 @@ const Orders = () => {
                     <div className='space-y-1 text-sm'>
                       <div className='flex justify-between'>
                         <span className='text-gray-600'>Price:</span>
-                        <span className='font-semibold text-gray-800'>${item.price}</span>
+                        <span className='font-semibold text-gray-800'>₹{item.price}</span>
                       </div>
                       <div className='flex justify-between'>
                         <span className='text-gray-600'>Quantity:</span>

@@ -121,7 +121,7 @@ const Profile = () => {
                       
                       <div className='flex justify-between items-baseline mb-4'>
                         <span className='text-2xl font-bold text-blue-600'>
-                          ${item.price}
+                          ₹{item.price}
                         </span>
                         <span className='text-gray-600'>
                           /{item.priceUnit || 'day'}

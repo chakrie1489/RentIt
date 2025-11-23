@@ -105,7 +105,7 @@ const Cart = () => {
                           </h3>
                           <div className='space-y-1 text-sm'>
                             <p className='text-gray-600'>
-                              <span className='text-gray-400'>Price:</span> <span className='font-semibold text-gray-800'>${productData.price}/day</span>
+                              <span className='text-gray-400'>Price:</span> <span className='font-semibold text-gray-800'>₹{productData.price}/day</span>
                             </p>
                             {item.size && (
                               <p className='text-gray-600'>
@@ -143,7 +143,7 @@ const Cart = () => {
                           </div>
                           
                           <p className='text-lg font-bold text-blue-600'>
-                            ${(productData.price * item.quantity).toFixed(2)}
+                            ₹{(productData.price * item.quantity).toFixed(2)}
                           </p>
 
                           <button
@@ -168,22 +168,22 @@ const Cart = () => {
                 <div className='space-y-4 mb-6 pb-6 border-b border-gray-200'>
                   <div className='flex justify-between'>
                     <span className='text-gray-600'>Subtotal</span>
-                    <span className='font-semibold text-gray-800'>${calculateTotal().toFixed(2)}</span>
+                    <span className='font-semibold text-gray-800'>₹{calculateTotal().toFixed(2)}</span>
                   </div>
                   <div className='flex justify-between'>
                     <span className='text-gray-600'>Tax (10%)</span>
-                    <span className='font-semibold text-gray-800'>${(calculateTotal() * 0.1).toFixed(2)}</span>
+                    <span className='font-semibold text-gray-800'>₹{(calculateTotal() * 0.1).toFixed(2)}</span>
                   </div>
                   <div className='flex justify-between'>
                     <span className='text-gray-600'>Shipping</span>
-                    <span className='font-semibold text-gray-800'>$5.00</span>
+                    <span className='font-semibold text-gray-800'>₹500</span>
                   </div>
                 </div>
 
                 <div className='flex justify-between items-center mb-6'>
                   <span className='text-lg font-bold text-gray-800'>Total</span>
                   <span className='text-2xl font-bold text-blue-600'>
-                    ${(calculateTotal() * 1.1 + 5).toFixed(2)}
+                    ₹{(calculateTotal() * 1.1 + 500).toFixed(2)}
                   </span>
                 </div>
 

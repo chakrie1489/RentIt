@@ -106,7 +106,7 @@ const Product = () => {
 
               <div className="flex items-baseline gap-2 mb-4">
                 <p className="text-3xl font-bold text-blue-600">
-                  ${item.price}
+                  ₹{item.price}
                 </p>
                 <p className="text-lg text-gray-600">
                   per {item.priceUnit || "day"}
@@ -186,7 +186,7 @@ const Product = () => {
                     <div className="flex justify-between">
                       <span className="text-gray-600">Security Deposit:</span>
                       <span className="font-semibold text-gray-800">
-                        ${item.deposit_amount}
+                        ₹{item.deposit_amount}
                       </span>
                     </div>
                   )}

@@ -219,7 +219,7 @@ const NewRequest = () => {
             <div className='grid grid-cols-2 gap-4 mb-6'>
               <div>
                 <label className='block text-sm font-semibold text-gray-800 mb-2'>
-                  Max Price per Day ($) *
+                  Max Price per Day (₹) *
                 </label>
                 <input
                   type='number'
