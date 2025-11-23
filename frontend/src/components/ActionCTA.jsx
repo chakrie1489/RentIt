@@ -18,7 +18,7 @@ const ActionCTA = () => {
     if (!token) {
       navigate('/login')
     } else {
-      navigate('/collection') // or a dedicated request page
+      navigate('/requests/new')
     }
   }
 
@@ -85,7 +85,7 @@ const ActionCTA = () => {
               onClick={handleRequestClick}
               className='w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition'
             >
-              {token ? 'Browse Items' : 'Login to Request'}
+              {token ? 'Post a Request' : 'Login to Request'}
             </button>
           </div>
         </div>
